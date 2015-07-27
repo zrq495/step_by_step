@@ -1,0 +1,33 @@
+body {
+    padding-top: 60px;
+}
+
+.nav-tabs{
+    padding-top: 20px;
+    margin-bottom: 10px
+}
+
+.content{
+    margin-top: 20px
+}
+
+.right{
+    float: right;
+}
+
+.left{
+    float: left;
+}
+
+/*
+ * Footer
+ */
+
+.footer {
+     padding: 40px 0;
+     color: #999;
+     text-align: center;
+     background-color: #f9f9f9;
+     border-top: 1px solid #e5e5e5;
+     margin-top: 40px;
+}

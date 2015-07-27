@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}{% endblock %}
+
+{% block page_content %}
+<div id="divSuspended" class="col-md-3 fix_div1" style="position: relative; left: 0px; height: 100%;">
+  <table class="table table-bordered" style="background-color:#FFFFFF">
+    <tbody>
+    <tr>
+        <th colspan="3">题目列表</th>
+    </tr>
+    <tr>
+        <td>专项</td>
+        <td>专题</td>
+        <td>题目</td>
+    </tr>
+    {% for problem in problems %}
+    <tr>
+      <td>{{ problem.category.parent.name }}</td>
+      <td>{{ problem.category.name }}</td>
+      <td>{{ problem.problem_id }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+{% endblock %}

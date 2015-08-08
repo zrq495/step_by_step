@@ -89,6 +89,12 @@ class UserModel(UserMixin, db.Model):
     def is_administrator(self):
         return self.can(Permission.ADMINISTER)
 
+    def get_submit_date(self, problem_id):
+        solution = self.solutions.filter_by(problem_id=problem_id).first()
+        if not solution:
+            return ''
+        return solution.date_submit.strftime('%Y-%m-%d')
+
     def __repr__(self):
         return 'User %r' % self.username
 

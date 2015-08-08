@@ -3,22 +3,29 @@
 {% block title %}{% endblock %}
 
 {% block page_content %}
-<div id="divSuspended" class="col-md-3 fix_div1" style="position: relative; left: 0px; height: 100%;">
-  <table id="step_table" class="table table-bordered" style="background-color:#FFFFFF">
+<div>
+  <table id="step_table" class="table table-bordered">
     <tbody>
     <tr>
         <th colspan="3">题目列表</th>
+        <th colspan="{{ users|length }}">用户</th>
     </tr>
     <tr>
         <td>专项</td>
         <td>专题</td>
         <td>题目</td>
+        {% for user in users -%}
+        <td>{{ user.username }}</td>
+        {%- endfor %}
     </tr>
     {% for problem in problems %}
     <tr>
       <td>{{ problem.category.parent.name }}</td>
       <td>{{ problem.category.name }}</td>
       <td>{{ problem.problem_id }}</td>
+      {% for user in users -%}
+      <td>{{ user.get_submit_date(problem.id) }}</td>
+      {%- endfor %}
     </tr>
     {% endfor %}
   </table>

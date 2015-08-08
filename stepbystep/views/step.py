@@ -12,7 +12,7 @@ from flask import (
 )
 from flask.views import MethodView
 
-from stepbystep.models import CategoryModel
+from stepbystep.models import CategoryModel, UserModel
 
 
 class StepView(MethodView):
@@ -32,11 +32,15 @@ class StepView(MethodView):
         self.problems = []
         parent = CategoryModel.query.filter(CategoryModel.url == parent).first()
         child = CategoryModel.query.filter(CategoryModel.url == child).first()
+        users = (
+            UserModel.query
+            .filter(UserModel.is_display)
+            .all())
         self._get_problems(child)
         if child.parent == parent:
             return render_template(
                 self.template, parent=parent, child=child,
-                problems=self.problems)
+                problems=self.problems, users=users)
 
 
 bp_step = Blueprint('step', __name__)

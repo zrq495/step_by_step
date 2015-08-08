@@ -18,6 +18,7 @@ class CategoryModel(db.Model):
     name = db.Column(db.String(64), nullable=False)
     url = db.Column(db.String(64))
     parent_id = db.Column(db.Integer)
+    ordinal = db.Column(db.Integer)
     date_created = db.Column(
         db.DateTime, nullable=False, index=True,
         server_default=db.func.current_timestamp())
@@ -33,6 +34,7 @@ class CategoryModel(db.Model):
         'ProblemModel',
         primaryjoin='CategoryModel.id==ProblemModel.category_id',
         foreign_keys='[ProblemModel.category_id]',
+        order_by='ProblemModel.ordinal',
         backref=db.backref('category', lazy=True),
         lazy='dynamic',
         uselist=True)

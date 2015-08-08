@@ -25,6 +25,7 @@ with app.app_context():
     from .views import (
         bp_index,
         bp_auth,
+        bp_step,
     )
 
     app.register_blueprint(
@@ -35,4 +36,9 @@ with app.app_context():
     app.register_blueprint(
         bp_auth,
         url_prefix='/auth'
+    )
+
+    app.register_blueprint(
+        bp_step,
+        url_prefix='/step'
     )

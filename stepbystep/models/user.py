@@ -2,9 +2,9 @@
 
 from __future__ import unicode_literals
 
-from datetime import datetime
 from flask.ext.login import UserMixin, AnonymousUserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
+from sqlalchemy import sql
 
 from stepbystep import db, login_manager
 from .role import Permission
@@ -28,6 +28,8 @@ class UserModel(UserMixin, db.Model):
         db.String(256), unique=True, index=True, nullable=False)
     password_hash = db.Column(db.String(128), nullable=False)
     role_id = db.Column(db.Integer)
+    is_display = db.Column(
+        db.Boolean(), nullable=False, server_default=sql.true())
     date_created = db.Column(
         db.DateTime, nullable=False, index=True,
         server_default=db.func.current_timestamp())

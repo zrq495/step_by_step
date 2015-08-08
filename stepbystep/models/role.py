@@ -33,7 +33,8 @@ class RoleModel(db.Model):
     @staticmethod
     def insert_roles():
         roles = {
-            'Administrator': (0xff, False)
+            'User': (0x10, True),
+            'Administrator': (0xff, False),
         }
         for r in roles:
             role = RoleModel.query.filter_by(name=r).first()

@@ -13,12 +13,13 @@ from stepbystep import db
 class UserAdmin(ModelViewMixin):
 
     column_list = [
-        'username', 'role', 'poj', 'sdut', 'date_created']
+        'username', 'role', 'is_display', 'poj', 'sdut', 'date_created']
     column_filters = ['username']
     column_searchable_list = ['username']
 
     form_excluded_columns = [
-        'password_hash', 'date_created', 'role_id', 'account']
+        'password_hash', 'date_created', 'role_id', 'account',
+        'solutions']
 
     def __init__(self, session, **kwargs):
         super(UserAdmin, self).__init__(UserModel, session, **kwargs)

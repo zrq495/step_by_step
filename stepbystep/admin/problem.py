@@ -14,7 +14,7 @@ class ProblemAdmin(ModelViewMixin):
     column_filters = ['oj_name', 'problem_id']
     column_searchable_list = ['problem_id', 'oj_name']
 
-    form_excluded_columns = ['date_created', 'category_id']
+    form_excluded_columns = ['date_created', 'category_id', 'solutions']
 
     def __init__(self, session, **kwargs):
         super(ProblemAdmin, self).__init__(ProblemModel, session, **kwargs)

@@ -4,7 +4,7 @@
 
 {% block page_content %}
 <div id="divSuspended" class="col-md-3 fix_div1" style="position: relative; left: 0px; height: 100%;">
-  <table class="table table-bordered" style="background-color:#FFFFFF">
+  <table id="step_table" class="table table-bordered" style="background-color:#FFFFFF">
     <tbody>
     <tr>
         <th colspan="3">题目列表</th>
@@ -23,4 +23,9 @@
     {% endfor %}
   </table>
 </div>
+{% endblock %}
+
+{% block script %}
+{{ super() }}
+<script src="{{ url_for('static', filename='js/table.js') }}"></script>
 {% endblock %}

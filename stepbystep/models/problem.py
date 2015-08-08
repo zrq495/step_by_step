@@ -23,5 +23,13 @@ class ProblemModel(db.Model):
         db.DateTime, nullable=False, index=True,
         server_default=db.func.current_timestamp())
 
+    solutions = db.relationship(
+        'SolutionModel',
+        primaryjoin='ProblemModel.id==SolutionModel.problem_id',
+        foreign_keys='[SolutionModel.problem_id]',
+        backref=db.backref('problem', lazy=True),
+        lazy='dynamic',
+        uselist=True)
+
     def __repr__(self):
         return '%r: %r' % (self.oj_name, self.problem_id)

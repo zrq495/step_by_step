@@ -62,6 +62,13 @@ class UserModel(UserMixin, db.Model):
             lazy='dynamic'),
         lazy=True)
 
+    solutions = db.relationship(
+        'SolutionModel',
+        primaryjoin='UserModel.id==SolutionModel.user_id',
+        foreign_keys='[SolutionModel.user_id]',
+        backref=db.backref('user', lazy=True),
+        lazy='dynamic')
+
     @property
     def password(self):
         raise AttributeError('password is not a readable attribute')

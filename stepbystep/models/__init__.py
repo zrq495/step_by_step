@@ -7,6 +7,7 @@ from .account import *  # noqa
 from .role import *  # noqa
 from .category import *  # noqa
 from .problem import *  # noqa
+from .solution import *  # noqa
 
 from stepbystep import db
 db.configure_mappers()

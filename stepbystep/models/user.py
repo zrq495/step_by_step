@@ -27,6 +27,7 @@ class UserModel(UserMixin, db.Model):
     username = db.Column(
         db.String(256), unique=True, index=True, nullable=False)
     password_hash = db.Column(db.String(128), nullable=False)
+    grade = db.Column(db.String(64))
     role_id = db.Column(db.Integer)
     is_display = db.Column(
         db.Boolean(), nullable=False, server_default=sql.true())
